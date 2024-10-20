@@ -1,18 +1,27 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace WebApi.Domain.Entities
 {
     public class Order
     {
-        public int Id { get; set; }
+        public enum OrderStatus
+        {
+            Aberto,
+            Fechado,
+            Cancelado
+        }
 
+        [Key]
+        public int Id { get; set; }
+        public OrderStatus Status { get; private set; }
         public required string OrderName { get; set; }
 
         public required string ClientName { get; set; }
 
         public decimal Price => OrderItem?.Sum(i => i.Item != null ? i.Quantity * i.Item.Price : 0) ?? 0;
-
-        public StatusPedido Status { get; private set; }
 
         [Required]
         public DateTime CreatedAt { get; set; }
@@ -22,7 +31,7 @@ namespace WebApi.Domain.Entities
 
         public void AdicionarItem(OrderItem item)
         {
-            if (Status == StatusPedido.Fechado || Status == StatusPedido.Cancelado)
+            if (Status == OrderStatus.Fechado || Status == OrderStatus.Cancelado)
                 throw new InvalidOperationException("Não é possível adicionar itens a um pedido fechado ou cancelado.");
 
             OrderItem?.Add(item);
@@ -30,7 +39,7 @@ namespace WebApi.Domain.Entities
 
         public void RemoverItem(OrderItem item)
         {
-            if (Status == StatusPedido.Fechado || Status == StatusPedido.Cancelado)
+            if (Status == OrderStatus.Fechado || Status == OrderStatus.Cancelado)
                 throw new InvalidOperationException("Não é possível remover itens de um pedido fechado ou cancelado.");
 
             OrderItem?.Remove(item);
@@ -40,12 +49,11 @@ namespace WebApi.Domain.Entities
         {
             if (OrderItem == null || !OrderItem.Any())
                 throw new InvalidOperationException("Um pedido deve conter ao menos um item para ser fechado.");
-            Status = StatusPedido.Fechado;
+            Status = OrderStatus.Fechado;
         }
 
-        public void AtualizarStatus(StatusPedido novoStatus)
+        public void AtualizarStatus(OrderStatus novoStatus)
         {
-            // Remover lógica de fechamento, pois já está verificada em FecharPedido()
             Status = novoStatus;
         }
     }
