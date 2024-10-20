@@ -1,15 +1,17 @@
 using WebApi.Application.DTOs;
 using WebApi.Application.Interfaces;
 using WebApi.Domain.Entities;
-using WebApi.Infraestructure.Repositories;
+using WebApi.Domain.Repositories;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WebApi.Application.Services
 {
     public class ItemService : IItemService
     {
-        private readonly ItemRepository _itemRepository;
+        private readonly IItemRepository _itemRepository; 
 
-        public ItemService(ItemRepository itemRepository)
+        public ItemService(IItemRepository itemRepository)
         {
             _itemRepository = itemRepository;
         }

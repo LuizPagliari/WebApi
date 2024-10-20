@@ -20,23 +20,33 @@ namespace WebApi.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DefaultConnection") 
+            var connectionString = Configuration.GetConnectionString("DefaultConnection")
                                    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySQL(connectionString));
 
-            // Repositórios
             services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 
-            // Serviços
             services.AddScoped<IItemService, ItemService>();
-            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderService, OrderService>(); // Certifique-se de que este serviço está registrado
 
             services.AddControllers();
             services.AddSwaggerGen();
+
+            // Configuração de CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -49,6 +59,10 @@ namespace WebApi.API
             }
 
             app.UseRouting();
+
+            // Use CORS
+            app.UseCors("AllowAllOrigins");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -60,16 +60,15 @@ namespace WebApi.API.Controllers
             if (!order.OrderItems.Any())
                 return BadRequest("Order must contain at least one item to be closed.");
 
-           
             order.Status = OrderDto.OrderStatus.Fechado;
             await _orderService.UpdateOrderAsync(order);
             return NoContent();
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllOrders()
+        public async Task<IActionResult> GetAllOrders([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10, [FromQuery] OrderDto.OrderStatus? status = null)
         {
-            var orders = await _orderService.GetAllOrdersAsync();
+            var orders = await _orderService.GetAllOrdersAsync(pageNumber, pageSize, status);
             return Ok(orders);
         }
 
