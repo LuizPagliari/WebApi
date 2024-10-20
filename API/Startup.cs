@@ -2,6 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApi.Infraestructure;
+using WebApi.Application.Interfaces;
+using WebApi.Application.Services;
+using WebApi.Domain.Repositories;
+using WebApi.Infraestructure.Repositories;
 
 namespace WebApi.API
 {
@@ -22,12 +26,33 @@ namespace WebApi.API
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySQL(connectionString));
 
-            // Outras configurações de serviço
+            // Repositórios
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+
+            // Serviços
+            services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IOrderService, OrderService>();
+
+            services.AddControllers();
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Configurações do middleware
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
+            }
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

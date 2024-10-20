@@ -4,10 +4,10 @@ namespace WebApi.Domain.Repositories
 {
     public interface IItemRepository
     {
-        Task<Item?> GetByIdAsync(int id);
         Task<IEnumerable<Item>> GetAllAsync();
+        Task<Item> GetByIdAsync(int id);
         Task AddAsync(Item item);
         Task UpdateAsync(Item item);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Item item);
     }
 }
