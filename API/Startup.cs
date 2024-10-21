@@ -31,7 +31,7 @@ namespace WebApi.API
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 
             services.AddScoped<IItemService, ItemService>();
-            services.AddScoped<IOrderService, OrderService>(); // Certifique-se de que este serviço está registrado
+            services.AddScoped<IOrderService, OrderService>(); 
 
             services.AddControllers();
             services.AddSwaggerGen();
