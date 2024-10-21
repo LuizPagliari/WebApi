@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\webapi\\WebApi.csproj": {}
+    "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\webapi\\WebApi.csproj": {
+    "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\webapi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\webapi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\luiz.pagliari\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\webapi\\obj\\",
+        "outputPath": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luiz.pagliari\\AppData\\Roaming\\NuGet\\NuGet.Config",

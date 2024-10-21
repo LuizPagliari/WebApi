@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UIrgAhUmBms=",
+  "dgSpecHash": "0BGdfhtYnO4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\webapi\\WebApi.csproj",
+  "projectFilePath": "C:\\Users\\luiz.pagliari\\OneDrive - Biopark Educação\\Área de Trabalho\\WebApi\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luiz.pagliari\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\luiz.pagliari\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
