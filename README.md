@@ -28,7 +28,7 @@ API desenvolvida com finalidade de gestão de pedidos e produtos.
 - **Entity Framework Core:** ORM para interação com o banco de dados.
 Conexão com o Banco de dados pode ser ajustado em appsettings.json.
 - **MySQL:** Banco de dados utilizado para armazenamento de dados.
-- **IDE para desenvolvimento:** VSCode.
+- **IDE para desenvolvimento:** VSCode e Visual Studio.
 - **Documentação da API:** Swagger.
 - **xUnit** Para testes Unitários.
 
@@ -57,24 +57,20 @@ dotnet restore
 
 4. Configure o banco de dados em appsettings.json:
 
-![Image](./WebApi/Assets/stringbanco.png)
+![Image](Assets/stringbanco.jpeg)
 
 5. Rodar a aplicação:
 
 dotnet run
 
+No navegador acesse http://localhost:5251/swagger/index.html
+
 Ou rodando manualmente o Startup.cs que está localizado na pasta API.
 
 ## EndPoints
 
-![Image](./WebApi/Assets/Swagger.png)
+![Image](Assets/Swagger.jpeg)
 
 ## Modelo banco
 
-![Image](./WebApi/Assets/Banco.png)
-
-
-
-
-
-
+![Image](Assets/Banco.jpeg)
